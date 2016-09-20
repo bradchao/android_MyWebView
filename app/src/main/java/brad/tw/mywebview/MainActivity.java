@@ -11,10 +11,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        mesg = (TextView)findViewById(R.id.mesg);
-        webview = (WebView)findViewById(R.id.webview);
+        webview = new WebView(this);
+        webview.loadUrl("http://www.iii.org.tw");
+        setContentView(webview);
+
+//        setContentView(R.layout.activity_main);
+
+//        mesg = (TextView)findViewById(R.id.mesg);
+//        webview = (WebView)findViewById(R.id.webview);
         initWebView();
     }
 
