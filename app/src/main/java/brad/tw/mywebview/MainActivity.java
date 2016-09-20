@@ -1,5 +1,6 @@
 package brad.tw.mywebview;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -66,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
             data.putString("mesg", webmesg);
             msg.setData(data);
             handler.sendMessage(msg);
+        }
+        @JavascriptInterface
+        public void gotoPage2(){
+            Intent it = new Intent(MainActivity.this, Page2Activity.class);
+            startActivity(it);
         }
     }
 
