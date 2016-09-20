@@ -1,5 +1,7 @@
 package brad.tw.mywebview;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,11 +12,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mesg;
     private WebView webview;
     private EditText inputName;
+    private UIHandler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(webview);
 
         setContentView(R.layout.activity_main);
+
+        handler = new UIHandler();
 
         mesg = (TextView)findViewById(R.id.mesg);
         webview = (WebView)findViewById(R.id.webview);
@@ -53,6 +59,21 @@ public class MainActivity extends AppCompatActivity {
         @JavascriptInterface
         public void showMesg(String webmesg){
             Log.d("brad", webmesg);
+            Toast.makeText(MainActivity.this, webmesg, Toast.LENGTH_SHORT).show();
+
+            Message msg = new Message();
+            Bundle data = new Bundle();
+            data.putString("mesg", webmesg);
+            msg.setData(data);
+            handler.sendMessage(msg);
+        }
+    }
+
+    private class UIHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            mesg.setText(msg.getData().getString("mesg"));
         }
     }
 
