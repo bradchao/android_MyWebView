@@ -3,6 +3,7 @@ package brad.tw.mywebview;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -27,8 +28,12 @@ public class MainActivity extends AppCompatActivity {
     private void initWebView(){
         WebViewClient client = new WebViewClient();
         webview.setWebViewClient(client);
-        webview.loadUrl("http://www.iii.org.tw");
-//        webview.loadUrl("file:///android_asset/brad.html");
+
+        WebSettings settings = webview.getSettings();
+        settings.setJavaScriptEnabled(true);
+
+//        webview.loadUrl("http://www.iii.org.tw");
+        webview.loadUrl("file:///android_asset/brad.html");
 //        String data = "<h1>Brad Big Company</h1>";
 //        webview.loadData(data, "text/html;charset=UTF-8",null);
 
