@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void b2task(View v){
-        doNext();
+        int x = 3,  y = 4;
+        webview.loadUrl("javascript:test3(" + x + "," + y +")");
     }
     public void b3task(View v){
         doReload();
