@@ -9,9 +9,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 public class Page2Activity extends AppCompatActivity {
     private WebView webview;
@@ -38,6 +40,7 @@ public class Page2Activity extends AppCompatActivity {
         WebSettings settings = webview.getSettings();
         settings.setJavaScriptEnabled(true);
 
+        webview.addJavascriptInterface(new BradJS(), "brad");
         webview.loadUrl("file:///android_asset/page2.html");
 
     }
@@ -75,6 +78,15 @@ public class Page2Activity extends AppCompatActivity {
         mgr.removeUpdates(listener);
 
     }
+
+    private class BradJS {
+        @JavascriptInterface
+        public void getLatLng(String lat, String lng){
+            Toast.makeText(Page2Activity.this, lat + "x" + lng, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     private class MyGPSListener implements LocationListener {
         @Override
         public void onLocationChanged(Location location) {

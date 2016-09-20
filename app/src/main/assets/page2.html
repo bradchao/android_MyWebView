@@ -16,6 +16,13 @@ function initMap() {
     center: {lat: -34.397, lng: 150.644},
     zoom: 8
   });
+
+  map.addListener("click", function(e){
+        var lat = e.latLng.lat();
+        var lng = e.latLng.lng();
+        brad.getLatLng(lat, lng);
+        //alert(lat + ' : ' + lng);
+  });
 }
 
 function moveMap(newLat, newLng){
