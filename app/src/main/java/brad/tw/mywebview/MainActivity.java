@@ -2,7 +2,9 @@ package brad.tw.mywebview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -35,12 +37,23 @@ public class MainActivity extends AppCompatActivity {
         WebSettings settings = webview.getSettings();
         settings.setJavaScriptEnabled(true);
 
+        webview.addJavascriptInterface(new BradJS(), "brad");
+
 //        webview.loadUrl("http://www.iii.org.tw");
         webview.loadUrl("file:///android_asset/brad.html");
+//        webview.loadUrl("file:///android_asset/imgs/android.gif");
 //        String data = "<h1>Brad Big Company</h1>";
 //        webview.loadData(data, "text/html;charset=UTF-8",null);
 
 
+    }
+
+
+    public class BradJS {
+        @JavascriptInterface
+        public void showMesg(String webmesg){
+            Log.d("brad", webmesg);
+        }
     }
 
     public void b1task(View v){
