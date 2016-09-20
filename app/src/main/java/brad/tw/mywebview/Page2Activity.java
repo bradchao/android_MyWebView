@@ -78,7 +78,9 @@ public class Page2Activity extends AppCompatActivity {
     private class MyGPSListener implements LocationListener {
         @Override
         public void onLocationChanged(Location location) {
-
+            double lat = location.getLatitude();
+            double lng = location.getLongitude();
+            webview.loadUrl("javascript:moveMap(" + lat + ", " + lng + ")");
         }
 
         @Override
