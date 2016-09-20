@@ -2,7 +2,9 @@ package brad.tw.mywebview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,9 +25,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initWebView(){
-        //webview.loadUrl("http://www.iii.org.tw");
-        //webview.loadUrl("file:///android_asset/brad.html");
-        String data = "<h1>Brad Big Company</h1>";
-        webview.loadData(data, "text/html;charset=UTF-8",null);
+        WebViewClient client = new WebViewClient();
+        webview.setWebViewClient(client);
+        webview.loadUrl("http://www.iii.org.tw");
+//        webview.loadUrl("file:///android_asset/brad.html");
+//        String data = "<h1>Brad Big Company</h1>";
+//        webview.loadData(data, "text/html;charset=UTF-8",null);
+
+
     }
+
+    public void b1task(View v){
+        doPrev();
+    }
+    public void b2task(View v){
+        doNext();
+    }
+    public void b3task(View v){
+        doReload();
+    }
+
+    private void doPrev(){
+        webview.goBack();
+    }
+    private void doNext(){
+        webview.goForward();
+    }
+    private void doReload(){
+        webview.reload();
+    }
+
 }

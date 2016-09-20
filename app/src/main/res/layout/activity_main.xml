@@ -14,18 +14,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="b1"
+            android:onClick="b1task"
             />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="b2"
+            android:onClick="b2task"
             />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="b3"
+            android:onClick="b3task"
             />
     </LinearLayout>
     <TextView
