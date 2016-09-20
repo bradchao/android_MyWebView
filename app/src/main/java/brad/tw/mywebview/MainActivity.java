@@ -11,19 +11,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        webview = new WebView(this);
+//        webview.loadUrl("http://www.iii.org.tw");
+//        setContentView(webview);
 
-        webview = new WebView(this);
-        webview.loadUrl("http://www.iii.org.tw");
-        setContentView(webview);
+        setContentView(R.layout.activity_main);
 
-//        setContentView(R.layout.activity_main);
-
-//        mesg = (TextView)findViewById(R.id.mesg);
-//        webview = (WebView)findViewById(R.id.webview);
+        mesg = (TextView)findViewById(R.id.mesg);
+        webview = (WebView)findViewById(R.id.webview);
         initWebView();
     }
 
     private void initWebView(){
-
+        //webview.loadUrl("http://www.iii.org.tw");
+        //webview.loadUrl("file:///android_asset/brad.html");
+        String data = "<h1>Brad Big Company</h1>";
+        webview.loadData(data, "text/html;charset=UTF-8",null);
     }
 }
