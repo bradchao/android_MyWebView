@@ -1,8 +1,14 @@
 package brad.tw.mywebview;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private WebView webview;
     private EditText inputName;
     private UIHandler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new UIHandler();
 
-        mesg = (TextView)findViewById(R.id.mesg);
-        webview = (WebView)findViewById(R.id.webview);
-        inputName = (EditText)findViewById(R.id.inputName);
+
+        mesg = (TextView) findViewById(R.id.mesg);
+        webview = (WebView) findViewById(R.id.webview);
+        inputName = (EditText) findViewById(R.id.inputName);
         initWebView();
     }
+
 
     private void initWebView(){
         WebViewClient client = new WebViewClient();
@@ -54,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 
     public class BradJS {
